@@ -10,7 +10,6 @@
         <link rel="stylesheet" href="css/qgis2web.css"><link rel="stylesheet" href="css/fontawesome-all.min.css">
         <link rel="stylesheet" href="css/leaflet-control-geocoder.Geocoder.css">
         <link rel="stylesheet" href="css/leaflet-measure.css">
-
         <style>
         html, body, #map {
             width: 100%;
@@ -43,10 +42,12 @@
         <script src="data/31_MCMVcomEntornowebcopiarcopiar_6.js"></script>
         <script src="data/31_MCMVcomEntornowebcopiar_7.js"></script>
         <script src="data/31_MCMVcomEntornoweb_8.js"></script>
+        <script src="data/UHcontratadadficiturbano_9.js"></script>
+        <script src="data/Situaodosetordoempreendimento_10.js"></script>
         <script>
         var map = L.map('map', {
-            zoomControl:true, maxZoom:13, minZoom:3
-        }).fitBounds([[-29.087203355333543,-65.72358627433321],[-6.057593519473647,-25.850830250028125]]);
+            zoomControl:true, maxZoom:13, minZoom:4
+        }).fitBounds([[-30.57889002972227,-75.38872582038074],[0.43773312636001904,-22.22505112130729]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -222,10 +223,10 @@
         });
         bounds_group.addLayer(layer_31_MCMVcomEntornoweb_3);
         map.addLayer(layer_31_MCMVcomEntornoweb_3);
-        map.createPane('pane_OpenStreetMap_4');
-        map.getPane('pane_OpenStreetMap_4').style.zIndex = 404;
-        var layer_OpenStreetMap_4 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-            pane: 'pane_OpenStreetMap_4',
+        map.createPane('pane_OpenStreetMapcopy_4');
+        map.getPane('pane_OpenStreetMapcopy_4').style.zIndex = 404;
+        var layer_OpenStreetMapcopy_4 = L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            pane: 'pane_OpenStreetMapcopy_4',
             opacity: 1.0,
             attribution: '',
             minZoom: 4,
@@ -233,91 +234,76 @@
             minNativeZoom: 0,
             maxNativeZoom: 19
         });
-        layer_OpenStreetMap_4;
-        map.addLayer(layer_OpenStreetMap_4);
+        layer_OpenStreetMapcopy_4;
+        map.addLayer(layer_OpenStreetMapcopy_4);
         function pop_31_MCMVcomEntornowebcopiarcopiarcopiar_5(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                            <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">UH Contratada</th>\
+                        <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Contratada</th>\
-                            <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Concluída</th>\
+                        <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Concluída</th>\
-                            <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Entregue</th>\
+                        <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Entregue</th>\
-                            <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC município)</th>\
+                        <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC município)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC município)</th>\
-                            <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC município)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC município)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC município)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC município)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC município)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra energia (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra lixo (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra energia (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Déficit Habitacional Urbano</th>\
-                            <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Déficit Habitacional Urbano</th>\
+                        <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -362,86 +348,71 @@
         function pop_31_MCMVcomEntornowebcopiarcopiar_6(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                            <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">UH Contratada</th>\
+                        <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Contratada</th>\
-                            <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Concluída</th>\
+                        <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Concluída</th>\
-                            <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Entregue</th>\
+                        <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Entregue</th>\
-                            <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC município)</th>\
+                        <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC município)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC município)</th>\
-                            <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC município)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC município)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC município)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC município)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC município)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra energia (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra lixo (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra energia (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Déficit Habitacional Urbano</th>\
-                            <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Déficit Habitacional Urbano</th>\
+                        <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -486,86 +457,71 @@
         function pop_31_MCMVcomEntornowebcopiar_7(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                            <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">UH Contratada</th>\
+                        <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Contratada</th>\
-                            <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Concluída</th>\
+                        <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Concluída</th>\
-                            <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Entregue</th>\
+                        <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Entregue</th>\
-                            <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC município)</th>\
+                        <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC município)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC município)</th>\
-                            <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC município)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC município)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC município)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC município)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC município)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra energia (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra lixo (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra energia (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Déficit Habitacional Urbano</th>\
-                            <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Déficit Habitacional Urbano</th>\
+                        <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -610,86 +566,71 @@
         function pop_31_MCMVcomEntornoweb_8(feature, layer) {
             var popupContent = '<table>\
                     <tr>\
-                            <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">UH Contratada</th>\
+                        <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Contratada</th>\
-                            <td>' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Concluída</th>\
+                        <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Concluída</th>\
-                            <td>' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">UH Entregue</th>\
+                        <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">UH Entregue</th>\
-                            <td>' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC município)</th>\
+                        <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC município)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC município)</th>\
-                            <td>' + (feature.properties['água% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['água% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC município)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC município)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC município)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC município)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC município)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_municipios'] !== null ? autolinker.link(feature.properties['energia% contra_setores_municipios'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['água% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['água% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra energia (vs. SC urb. região)</th>\
+                        <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra esgoto (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['esgoto% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['esgoto% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra água (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra lixo (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['lixo% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['lixo% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra energia (vs. SC urb. região)</th>\
-                            <td>' + (feature.properties['energia% contra_setores_URB_Região'] !== null ? autolinker.link(feature.properties['energia% contra_setores_URB_Região'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Infra lixo (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
+                        <th scope="row">Infra energia (vs. SC Brasil)</th>\
+                        <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
                     </tr>\
                     <tr>\
-                            <th scope="row">Infra água (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['água% contraBR'] !== null ? autolinker.link(feature.properties['água% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra esgoto (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['esgoto% contraBR'] !== null ? autolinker.link(feature.properties['esgoto% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra lixo (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['lixo% contraBR'] !== null ? autolinker.link(feature.properties['lixo% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Infra energia (vs. SC Brasil)</th>\
-                            <td>' + (feature.properties['energia% contraBR'] !== null ? autolinker.link(feature.properties['energia% contraBR'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <td colspan="2">' + autolinker.link('-----------------------------------------------------------') + '</td>\
-                    </tr>\
-                    <tr>\
-                            <th scope="row">Déficit Habitacional Urbano</th>\
-                            <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
+                        <th scope="row">Déficit Habitacional Urbano</th>\
+                        <td>' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
                     </tr>\
                 </table>';
             layer.bindPopup(popupContent, {maxHeight: 400});
@@ -731,6 +672,273 @@
         });
         bounds_group.addLayer(layer_31_MCMVcomEntornoweb_8);
         map.addLayer(layer_31_MCMVcomEntornoweb_8);
+        function pop_UHcontratadadficiturbano_9(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['CD_MUN'] !== null ? autolinker.link(feature.properties['CD_MUN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['NM_MUN'] !== null ? autolinker.link(feature.properties['NM_MUN'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['SIGLA_UF'] !== null ? autolinker.link(feature.properties['SIGLA_UF'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['AREA_KM2'] !== null ? autolinker.link(feature.properties['AREA_KM2'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['cod_mun_int'] !== null ? autolinker.link(feature.properties['cod_mun_int'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UH contrat'] !== null ? autolinker.link(feature.properties['UH contrat'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Déficit'] !== null ? autolinker.link(feature.properties['Déficit'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UH / deficit'] !== null ? autolinker.link(feature.properties['UH / deficit'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_UHcontratadadficiturbano_9_0(feature) {
+            if (feature.properties['UH / deficit'] >= 0.000000 && feature.properties['UH / deficit'] <= 10.000000 ) {
+                return {
+                pane: 'pane_UHcontratadadficiturbano_9',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(215,25,28,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['UH / deficit'] >= 10.000000 && feature.properties['UH / deficit'] <= 30.000000 ) {
+                return {
+                pane: 'pane_UHcontratadadficiturbano_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(83,83,83,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(253,174,97,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['UH / deficit'] >= 30.000000 && feature.properties['UH / deficit'] <= 60.000000 ) {
+                return {
+                pane: 'pane_UHcontratadadficiturbano_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(128,74,0,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(255,255,192,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['UH / deficit'] >= 60.000000 && feature.properties['UH / deficit'] <= 100.000000 ) {
+                return {
+                pane: 'pane_UHcontratadadficiturbano_9',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(98,98,98,1.0)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(166,217,106,1.0)',
+                interactive: false,
+            }
+            }
+            if (feature.properties['UH / deficit'] >= 100.000000 && feature.properties['UH / deficit'] <= 665.000000 ) {
+                return {
+                pane: 'pane_UHcontratadadficiturbano_9',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(26,150,65,1.0)',
+                interactive: false,
+            }
+            }
+        }
+        map.createPane('pane_UHcontratadadficiturbano_9');
+        map.getPane('pane_UHcontratadadficiturbano_9').style.zIndex = 409;
+        map.getPane('pane_UHcontratadadficiturbano_9').style['mix-blend-mode'] = 'normal';
+        var layer_UHcontratadadficiturbano_9 = new L.geoJson(json_UHcontratadadficiturbano_9, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_UHcontratadadficiturbano_9',
+            layerName: 'layer_UHcontratadadficiturbano_9',
+            pane: 'pane_UHcontratadadficiturbano_9',
+            onEachFeature: pop_UHcontratadadficiturbano_9,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_UHcontratadadficiturbano_9_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_UHcontratadadficiturbano_9);
+        map.addLayer(layer_UHcontratadadficiturbano_9);
+        function pop_Situaodosetordoempreendimento_10(feature, layer) {
+            var popupContent = '<table>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['fid'] !== null ? autolinker.link(feature.properties['fid'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['ID'] !== null ? autolinker.link(feature.properties['ID'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Cód. IBGE'] !== null ? autolinker.link(feature.properties['Cód. IBGE'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Município'] !== null ? autolinker.link(feature.properties['Município'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UH Contratada'] !== null ? autolinker.link(feature.properties['UH Contratada'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UH Concluída'] !== null ? autolinker.link(feature.properties['UH Concluída'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['UH Entregue'] !== null ? autolinker.link(feature.properties['UH Entregue'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Obra Realizado (%)'] !== null ? autolinker.link(feature.properties['Obra Realizado (%)'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Déficit Habitacional Urbano'] !== null ? autolinker.link(feature.properties['Déficit Habitacional Urbano'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['COD-SETOR'] !== null ? autolinker.link(feature.properties['COD-SETOR'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['Situacao_setor'] !== null ? autolinker.link(feature.properties['Situacao_setor'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                    <tr>\
+                        <td colspan="2">' + (feature.properties['situação_interpretado'] !== null ? autolinker.link(feature.properties['situação_interpretado'].toLocaleString()) : '') + '</td>\
+                    </tr>\
+                </table>';
+            layer.bindPopup(popupContent, {maxHeight: 400});
+        }
+
+        function style_Situaodosetordoempreendimento_10_0(feature) {
+            switch(String(feature.properties['Situacao_setor'])) {
+                case '1':
+                    return {
+                pane: 'pane_Situaodosetordoempreendimento_10',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(2,42,0,0.8196078431372549)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(247,252,245,1.0)',
+                interactive: false,
+            }
+                    break;
+                case '2':
+                    return {
+                pane: 'pane_Situaodosetordoempreendimento_10',
+                radius: 4.0,
+                opacity: 1,
+                color: 'rgba(0,66,3,0.7333333333333333)',
+                dashArray: '',
+                lineCap: 'butt',
+                lineJoin: 'miter',
+                weight: 1,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(213,239,207,1.0)',
+                interactive: false,
+            }
+                    break;
+                case '3':
+                    return {
+                pane: 'pane_Situaodosetordoempreendimento_10',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(158,216,152,1.0)',
+                interactive: false,
+            }
+                    break;
+                case '4':
+                    return {
+                pane: 'pane_Situaodosetordoempreendimento_10',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(84,181,103,1.0)',
+                interactive: false,
+            }
+                    break;
+                case '5':
+                    return {
+                pane: 'pane_Situaodosetordoempreendimento_10',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(29,134,65,1.0)',
+                interactive: false,
+            }
+                    break;
+                case '8':
+                    return {
+                pane: 'pane_Situaodosetordoempreendimento_10',
+                radius: 4.0,
+                stroke: false,
+                fill: true,
+                fillOpacity: 1,
+                fillColor: 'rgba(0,68,27,1.0)',
+                interactive: false,
+            }
+                    break;
+            }
+        }
+        map.createPane('pane_Situaodosetordoempreendimento_10');
+        map.getPane('pane_Situaodosetordoempreendimento_10').style.zIndex = 410;
+        map.getPane('pane_Situaodosetordoempreendimento_10').style['mix-blend-mode'] = 'normal';
+        var layer_Situaodosetordoempreendimento_10 = new L.geoJson(json_Situaodosetordoempreendimento_10, {
+            attribution: '',
+            interactive: false,
+            dataVar: 'json_Situaodosetordoempreendimento_10',
+            layerName: 'layer_Situaodosetordoempreendimento_10',
+            pane: 'pane_Situaodosetordoempreendimento_10',
+            onEachFeature: pop_Situaodosetordoempreendimento_10,
+            pointToLayer: function (feature, latlng) {
+                var context = {
+                    feature: feature,
+                    variables: {}
+                };
+                return L.circleMarker(latlng, style_Situaodosetordoempreendimento_10_0(feature));
+            },
+        });
+        bounds_group.addLayer(layer_Situaodosetordoempreendimento_10);
+        map.addLayer(layer_Situaodosetordoempreendimento_10);
         map.on("zoomend", function(e) {
             if (map.getZoom() <= 13 && map.getZoom() >= 10) {
                 map.addLayer(layer_31_MCMVcomEntornoweb_0);
@@ -823,6 +1031,8 @@
         .className += ' fa fa-search';
         document.getElementsByClassName('leaflet-control-geocoder-icon')[0]
         .title += 'Search for a place';
+        var baseMaps = {};
+        L.control.layers(baseMaps,{'Situação do setor do empreendimento<br /><table><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Áreaurbanizadadecidadeouvila0.png" /></td><td>Área urbanizada de cidade ou vila</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Áreanãourbanizadadecidadeouvila1.png" /></td><td>Área não urbanizada de cidade ou vila</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Áreaurbanaisolada2.png" /></td><td>Área urbana isolada</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Aglomeradoruraldeextensãourbana3.png" /></td><td>Aglomerado rural de extensão urbana</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Aglomeradoruralisoladopovoado4.png" /></td><td>Aglomerado rural isolado - povoado</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Zonarural5.png" /></td><td>Zona rural</td></tr></table>': layer_Situaodosetordoempreendimento_10,'UH contratada / déficit urbano<br /><table><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_0100.png" /></td><td>0 - 10%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_10301.png" /></td><td>10 - 30%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_30602.png" /></td><td>30 - 60%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_601003.png" /></td><td>60 - 100%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_1004.png" /></td><td>>100%</td></tr></table>': layer_UHcontratadadficiturbano_9,'<img src="legend/31_MCMVcomEntornoweb_8.png" /> 3.1_MCMVcomEntorno (web)': layer_31_MCMVcomEntornoweb_8,'<img src="legend/31_MCMVcomEntornowebcopiar_7.png" /> 3.1_MCMVcomEntorno (web)  copiar': layer_31_MCMVcomEntornowebcopiar_7,'<img src="legend/31_MCMVcomEntornowebcopiarcopiar_6.png" /> 3.1_MCMVcomEntorno (web)  copiar  copiar': layer_31_MCMVcomEntornowebcopiarcopiar_6,'<img src="legend/31_MCMVcomEntornowebcopiarcopiarcopiar_5.png" /> 3.1_MCMVcomEntorno (web)  copiar  copiar  copiar': layer_31_MCMVcomEntornowebcopiarcopiarcopiar_5,"OpenStreetMap copy": layer_OpenStreetMapcopy_4,'<img src="legend/31_MCMVcomEntornoweb_3.png" /> 3.1_MCMVcomEntorno (web)': layer_31_MCMVcomEntornoweb_3,'<img src="legend/31_MCMVcomEntornoweb_2.png" /> 3.1_MCMVcomEntorno (web)': layer_31_MCMVcomEntornoweb_2,'<img src="legend/31_MCMVcomEntornoweb_1.png" /> 3.1_MCMVcomEntorno (web)': layer_31_MCMVcomEntornoweb_1,'<img src="legend/31_MCMVcomEntornoweb_0.png" /> 3.1_MCMVcomEntorno (web)': layer_31_MCMVcomEntornoweb_0,},{collapsed:false}).addTo(map);
         setBounds();
         </script>
     </body>
