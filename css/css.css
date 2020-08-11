@@ -1,0 +1,11 @@
+table,th,td{
+    padding: 3px;
+    vertical-align: middle;
+    text-align: center;
+    column-width: auto;
+}
+
+th{
+    border: 1px solid gray;
+    border-radius: 6px;
+}
