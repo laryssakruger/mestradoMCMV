@@ -110,7 +110,7 @@
 
             // CAMADA EMPREENDIMENTOS
                 function pop_31_MCMVcomEntornoweb_0(feature, layer) {
-                    var popupContent = '<table>\
+                    var popupContent = '<table class="popup">\
                             <tr>\
                                 <td colspan="60">' + feature.properties['Município']  + '</td>\
                             </tr>\
@@ -180,24 +180,33 @@
                 }
 
                 //// Estilo variável com o zoom
-                var tamanhoBolinha = map.getZoom()*1.5;
+                var tamanhoBolinha = 5.0
+                
+                function zoomVariavel(){
+                    if(map.getZoom()<=13 || map.getZoom()>10){ tamanhoBolinha = 8 };
+                    if(map.getZoom()<=10 || map.getZoom()>7){ tamanhoBolinha = 4 };
+                    if(map.getZoom()<=7){ tamanhoBolinha = 1 };
+                }
 
                 function style_31_MCMVcomEntornoweb_0_0() {
-                    return {
-                        pane: 'pane_31_MCMVcomEntornoweb_0',
-                        radius: tamanhoBolinha,
-                        opacity: 1,
-                        color: 'rgba(58,0,0,1.0)',
-                        dashArray: '',
-                        lineCap: 'butt',
-                        lineJoin: 'miter',
-                        weight: 1,
-                        fill: true,
-                        fillOpacity: 1,
-                        fillColor: 'rgba(255,5,1,1.0)',
-                        interactive: true,
-                    }
-                }
+                        return {
+                            pane: 'pane_31_MCMVcomEntornoweb_0',
+                            radius: tamanhoBolinha,
+                            opacity: 1,
+                            color: 'rgba(58,0,0,1.0)',
+                            dashArray: '',
+                            lineCap: 'butt',
+                            lineJoin: 'miter',
+                            weight: 1,
+                            fill: true,
+                            fillOpacity: 1,
+                            fillColor: 'rgba(255,5,1,1.0)',
+                            interactive: true,
+                        }
+                    }                
+
+
+
 
                 map.createPane('pane_31_MCMVcomEntornoweb_0');
                 map.getPane('pane_31_MCMVcomEntornoweb_0').style.zIndex = 500;
@@ -217,12 +226,7 @@
                         return L.circleMarker(latlng, style_31_MCMVcomEntornoweb_0_0(feature));
                     },
                 });
-
-                
-                bounds_group.addLayer(layer_31_MCMVcomEntornoweb_0);
                 map.addLayer(layer_31_MCMVcomEntornoweb_0);
-
-
 
                 map.createPane('pane_OpenStreetMapcopy_4');
                 map.getPane('pane_OpenStreetMapcopy_4').style.zIndex = 404;
@@ -362,7 +366,6 @@
                         return L.circleMarker(latlng, style_UHcontratadadficiturbano_9_0(feature));
                     },
                 });
-                bounds_group.addLayer(layer_UHcontratadadficiturbano_9);
                 map.addLayer(layer_UHcontratadadficiturbano_9);
 
             // CAMADA SITUAÇÃO DO SETOR CENSITÁRIO DO EMPREENDIMENTO
@@ -505,12 +508,70 @@
                         return L.circleMarker(latlng, style_Situaodosetordoempreendimento_10_0(feature));
                     },
                 });
-                bounds_group.addLayer(layer_Situaodosetordoempreendimento_10);
                 map.addLayer(layer_Situaodosetordoempreendimento_10);
                 
             // CONTROLE DE CAMADAS
-                L.control.layers(baseMaps,{'Situação do setor do empreendimento<br /><table><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Áreaurbanizadadecidadeouvila0.png" /></td><td>Área urbanizada de cidade ou vila</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Áreanãourbanizadadecidadeouvila1.png" /></td><td>Área não urbanizada de cidade ou vila</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Áreaurbanaisolada2.png" /></td><td>Área urbana isolada</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Aglomeradoruraldeextensãourbana3.png" /></td><td>Aglomerado rural de extensão urbana</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Aglomeradoruralisoladopovoado4.png" /></td><td>Aglomerado rural isolado - povoado</td></tr><tr><td style="text-align: center;"><img src="legend/Situaodosetordoempreendimento_10_Zonarural5.png" /></td><td>Zona rural</td></tr></table>': layer_Situaodosetordoempreendimento_10,'UH contratada / déficit urbano<br /><table><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_0100.png" /></td><td>0 - 10%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_10301.png" /></td><td>10 - 30%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_30602.png" /></td><td>30 - 60%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_601003.png" /></td><td>60 - 100%</td></tr><tr><td style="text-align: center;"><img src="legend/UHcontratadadficiturbano_9_1004.png" /></td><td>>100%</td></tr></table>': layer_UHcontratadadficiturbano_9,},{collapsed:false}).addTo(map);
+                L.control.layers(baseMaps,
+                        {
+                        ' <img src="legend/31_MCMVcomEntornoweb_0.png" />&nbspEmpreendimentos MCMV<br />': layer_31_MCMVcomEntornoweb_0
+                        
+                        ,
+
+                        'Situação do setor do empreendimento<br />\
+                            <table class="left">\
+                                <tr>\
+                                    <td><img src="legend/Situaodosetordoempreendimento_10_Áreaurbanizadadecidadeouvila0.png" /></td>\
+                                    <td>Área urbanizada de cidade ou vila</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/Situaodosetordoempreendimento_10_Áreanãourbanizadadecidadeouvila1.png" /></td>\
+                                    <td>Área não urbanizada de cidade ou vila</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/Situaodosetordoempreendimento_10_Áreaurbanaisolada2.png" /></td>\
+                                    <td>Área urbana isolada</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/Situaodosetordoempreendimento_10_Aglomeradoruraldeextensãourbana3.png" /></td>\
+                                    <td>Aglomerado rural de extensão urbana</td></tr><tr><td><img src="legend/Situaodosetordoempreendimento_10_Aglomeradoruralisoladopovoado4.png" /></td>\
+                                    <td>Aglomerado rural isolado - povoado</td></tr><tr><td><img src="legend/Situaodosetordoempreendimento_10_Zonarural5.png" /></td>\
+                                    <td>Zona rural</td>\
+                                </tr>\
+                            </table>': layer_Situaodosetordoempreendimento_10
+                            
+                        ,
+
+                        'UH contratada / déficit urbano<br />\
+                            <table class="left">\
+                                <tr>\
+                                    <td><img src="legend/UHcontratadadficiturbano_9_0100.png" /></td>\
+                                    <td>0 - 10%</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/UHcontratadadficiturbano_9_10301.png" /></td>\
+                                    <td>10 - 30%</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/UHcontratadadficiturbano_9_30602.png" /></td>\
+                                    <td>30 - 60%</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/UHcontratadadficiturbano_9_601003.png" /></td>\
+                                    <td>60 - 100%</td>\
+                                </tr>\
+                                <tr>\
+                                    <td><img src="legend/UHcontratadadficiturbano_9_1004.png" /></td>\
+                                    <td>>100%</td></tr>\
+                            </table>': layer_UHcontratadadficiturbano_9,
+                        
+                        }
+                        ,
+                        {collapsed:false}).addTo(map);
                 setBounds();
+
+            // SÓ UMA CAMADA LIGADA POR VEZ = edição do L.Control.Layers para habilitar radio buttons (https://stackoverflow.com/questions/36506767/how-to-make-checkboxes-in-leaflet-layers-control-behave-like-radio-buttons)
+
+
         </script>
     </body>
 </html>
